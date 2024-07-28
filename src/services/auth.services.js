@@ -16,9 +16,3 @@ const getUserData = (token) => {
 };
 
 module.exports = { getToken, getUserData };
-
-// console.log(
-//   getUserData(
-//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmE0ZTc0ZDZlZDIxMzNkNjVjNTY2NGEiLCJ1c2VybmFtZSI6InByYWJlaiIsImVtYWlsIjoicHJhYmVqQGdtYWlsLmNvbSIsImlhdCI6MTcyMjA4MzE0OX0.-dJ44_1ryOXD5g1dCgutbpUFaYqh1Caw4p2jzTfpRj0"
-//   )
-// );

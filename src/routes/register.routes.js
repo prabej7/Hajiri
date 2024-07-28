@@ -22,8 +22,11 @@ register.post("/", checkFields(3), (req, res) => {
           username: savedUser.username,
           email: savedUser.email,
         });
-
-        res.status(200).json({ id: token });
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: true,
+        });
+        res.status(200).json({ msg: "User account created successfully!" });
       } else {
         return res.status(201).json({
           error: "User with the same email or username already exists!",

@@ -7,12 +7,15 @@ const connectToDatabase = require("./config/db");
 const createTable = require("./routes/createTable.routes");
 const addAttendee = require("./routes/addAttendee.routes");
 const getUser = require("./routes/getAllUser.routes");
+const login = require("./routes/login.routes");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(cors());
 
 //Database connection
@@ -23,6 +26,7 @@ app.use("/register", register);
 app.use("/create-table", createTable);
 app.use("/add-attendee", addAttendee);
 app.use("/getuser", getUser);
+app.use("/login", login);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
