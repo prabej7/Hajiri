@@ -1,11 +1,12 @@
-const { Router } = require("express");
-const checkFields = require("../middlewares/checkFields.middleware");
-const Attendee = require("../models/attendee.model");
-const Table = require("../models/table.model");
+import express from "express";
 
-const addAttendee = Router();
+import { checkFields } from "../middlewares/checkFields.middleware.js";
+import { Attendee } from "../models/attendee.model.js";
+import { Table } from "../models/table.model.js";
 
-addAttendee.post("/", checkFields(2), (req, res) => {
+const router = express.Router();
+
+router.post("/", checkFields(2), (req, res) => {
   (async () => {
     try {
       const { tableid, attendeeName } = req.body;
@@ -29,4 +30,4 @@ addAttendee.post("/", checkFields(2), (req, res) => {
   })();
 });
 
-module.exports = addAttendee;
+export default router;

@@ -1,4 +1,4 @@
-const User = require("../models/user.model");
+import { User } from "../models/user.model.js";
 
 const checkUser = (email) => {
   return new Promise(async (resolve, reject) => {
@@ -12,4 +12,4 @@ const checkUser = (email) => {
   });
 };
 
-module.exports = checkUser;
+export default checkUser;

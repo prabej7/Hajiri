@@ -1,4 +1,4 @@
-const checkFields = (noOfField) => {
+export const checkFields = (noOfField) => {
   return (req, res, next) => {
     if (Object.keys(req.body).length == noOfField) {
       next();
@@ -7,5 +7,3 @@ const checkFields = (noOfField) => {
     }
   };
 };
-
-module.exports = checkFields;

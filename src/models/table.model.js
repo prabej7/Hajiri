@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+import mongoose, { Schema, Types, model } from "mongoose";
 
 const tableSchema = new Schema({
   name: {
@@ -14,6 +14,4 @@ const tableSchema = new Schema({
   ],
 });
 
-const Table = model("table", tableSchema);
-
-module.exports = Table;
+export const Table = mongoose.models.Table || model("Table", tableSchema);

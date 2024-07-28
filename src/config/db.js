@@ -1,10 +1,11 @@
-const { connect } = require("mongoose");
-const DB_URL = process.env.DB_URL;
+import mongoose from "mongoose";
+const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/Attendances";
 const connectToDatabase = () => {
   if (!DB_URL) {
     throw new Error("Please provide the database url.");
   }
-  connect(DB_URL)
+  mongoose
+    .connect(DB_URL)
     .then(() => {
       console.log("Connected to database successfully!");
     })
@@ -13,4 +14,4 @@ const connectToDatabase = () => {
     });
 };
 
-module.exports = connectToDatabase;
+export default connectToDatabase;

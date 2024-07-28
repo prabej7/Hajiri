@@ -1,9 +1,19 @@
-require("dotenv").config();
-const jwt = require("jsonwebtoken");
-const secretKey = process.env.JWT;
-const getToken = (payload) => {
-  if (!secretKey) return console.log("Please provide the JWT_SECRET_KEY");
-  return jwt.sign(payload, secretKey);
+import jwt from "jsonwebtoken";
+const secretKey = process.env.JWT || "ksjafuafasfkamfadsfgrrhrhre";
+const cookieOption = {
+  maxAge: 15 * 24 * 60 * 60 * 1000,
+  sameSite: "none",
+  httpOnly: true,
+  secure: true,
+};
+
+const getToken = (res, user, code, message) => {
+  const token = jwt.sign({ _id: user._id }, secretKey);
+
+  return res.status(code).cookie("attandee-token", token, cookieOption).json({
+    success: true,
+    message,
+  });
 };
 
 const getUserData = (token) => {
@@ -15,7 +25,7 @@ const getUserData = (token) => {
   }
 };
 
-module.exports = { getToken, getUserData };
+export { getToken, getUserData };
 
 // console.log(
 //   getUserData(
